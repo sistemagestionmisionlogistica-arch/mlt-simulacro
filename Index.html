@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualización de Datos Personales - MLT</title>
+<style>
+  :root{
+    --ink:#0F1B12;
+    --paper:#F6F3EC;
+    --alert:#B3261E;
+    --safe:#1E5B3A;
+    --line:#D8D2C2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Courier New', monospace;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .card{
+    max-width:520px;
+    width:100%;
+    background:var(--paper);
+    color:var(--ink);
+    border:2px solid var(--alert);
+    padding:32px 28px;
+    position:relative;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--alert);
+    color:var(--paper);
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:22px;
+    line-height:1.3;
+    margin-bottom:16px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+  }
+  p{
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:14px;
+  }
+  .meta{
+    font-size:12px;
+    color:#5c5c50;
+    border-top:1px dashed var(--line);
+    margin-top:20px;
+    padding-top:14px;
+  }
+  button{
+    margin-top:18px;
+    width:100%;
+    background:var(--safe);
+    color:var(--paper);
+    border:none;
+    padding:14px;
+    font-family:inherit;
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+  button:hover{opacity:0.9;}
+  button:disabled{background:#8a8a7a;cursor:default;}
+  .thanks{display:none;margin-top:16px;font-size:14px;color:var(--safe);font-weight:bold;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="tag">Simulacro · BASC</span>
+    <h1>Estimado colaborador, esto es un simulacro (Quishing)</h1>
+    <p>
+      Código QR que hace parte de los controles de seguridad del sistema de gestión BASC,
+      que busca concientizar los riesgos de seguridad informática que se pueden presentar
+      en las actividades diarias.
+    </p>
+    <p>
+      No se solicitó ni se recopiló ninguna contraseña, dato personal o financiero.
+      Si hubieras escrito información en un formulario real similar a este, repórtalo
+      de inmediato a Seguridad de la Información.
+    </p>
+    <button id="ackBtn" onclick="registrarEntendido()">Entendido</button>
+    <div class="thanks" id="thanks">✔ Registro guardado. Gracias por participar en el simulacro.</div>
+    <div class="meta" id="meta"></div>
+  </div>
+
+<script>
+  // Registro básico de fecha/hora del escaneo (visible en el mensaje, no se envía a ningún servidor)
+  const now = new Date();
+  document.getElementById('meta').textContent =
+    'Escaneo: ' + now.toLocaleString('es-CO');
+
+  function registrarEntendido(){
+    document.getElementById('ackBtn').disabled = true;
+    document.getElementById('thanks').style.display = 'block';
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSfiYjPoeGBjH0r69md61b4kJP5MabBREVP3SSwTJPggh2vcqQ/viewform", "_blank");
+  }
+</script>
+</body>
+</html>
